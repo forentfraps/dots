@@ -1,0 +1,170 @@
+# Declan "Vale" Chidlow's personal configuration file for Yambar
+# https://github.com/DeclanChidlow/dotfiles
+# https://vale.rocks
+
+awesome: &awesome Font Awesome 6:size=24
+
+bar:
+  height: 40
+  location: top
+  background: 130F0FE6
+  foreground: FFEAD0ff
+  #font: Lexend:size=24
+  font: DejaVu Sans Mono:size=24
+  #font: Awesome 6:size=24
+  margin: 15
+  spacing: 8
+
+  left:
+    #- i3:
+      #sort: ascending
+      # content:
+        # "":
+          # map:
+            # margin: 2
+            #default:
+              # - string: {text: " {name} ", foreground: 5E5A5Aff}
+            # conditions:
+              # state == focused:
+                #- string: {text: " {name} ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+              # state == urgent:
+                #            - string: {text: " {name} ", foreground: F13731ff, deco: {overline: {color: F13731ff, size: 3}}}
+    #- foreign-toplevel:
+    #  content:
+    #    map:
+    #      conditions:
+    #        ~activated: {empty: {}}
+    #        activated: 
+    #         - string: {text: "{app-id}", foreground: ffa0a0ff}
+    #         - string: {text: ": {title}", max: 45}
+    - script:
+        path: /home/btnq/coding/checkoutRice/yambar_script.sh
+        args: []
+        content:
+          list:
+            spacing: 20
+            items:
+              - string: {text: "{name}", foreground: FF5CCCFF, deco: {overline: {color: FF5CCCFF, size: 3}}}
+              - string: {text: "{time}", foreground: B947B1FF, deco: {overline: {color: B947B1FF, size: 3}}}
+              - string: {text: "{code}", foreground: 743296FF, deco: {overline: {color: 743296FF, size: 3}}}
+  right:
+#  - mem:
+#      poll-interval: 2500
+#      content:
+#        string: {text: "{used:mb} / {total:mb} MB", foreground: 6488eaff, deco: {overline: {color: 6488eaff, size: 3}}}
+
+
+  - cpu:
+     poll-interval: 2500
+     content:
+       map:
+         conditions:
+           id >= 0:
+             - ramp:
+                tag: cpu
+                items:
+                  - string: {text: " ▁▁▁▁ ", foreground: 58a551ff}
+                  - string: {text: " ▂▂▂▂ ", foreground: 58a551ff}
+                  - string: {text: " ▃▃▃▃ ", foreground: 58a551ff}
+                  - string: {text: " ▄▄▄▄ ", foreground: ffad1fff}
+                  - string: {text: " ▅▅▅▅ ", foreground: ffad1fff}
+                  - string: {text: " ▆▆▆▆ ", foreground: ffad1fff}
+                  - string: {text: " ▇▇▇▇ ", foreground: DE2062ff}
+                  - string: {text: " ████ ", foreground: DE2062ff}
+  - mem:
+      poll-interval: 2500
+      content:
+        string: {text: "{used:mb} / {total:mb} MB", foreground: 6488eaff, deco: {overline: {color: 6488eaff, size: 3}}}
+
+
+    #- alsa:
+      #card: default
+      #mixer: Master
+      #content:
+        # map:
+          # conditions:
+            #muted:
+              #- string: {text: " 󰸈  {percent}% ", foreground: F13731ff, deco: {overline: {color: F13731ff, size: 3}}}
+            #~muted:
+              #ramp:
+                #tag: percent
+                #items:
+                  #- string: {text: " 󰕿  {percent}% ", foreground: 2BB7BCff, deco: {overline: {color: 2BB7BCff, size: 3}}}
+                  # - string: {text: " 󰖀  {percent}% ", foreground: 2BB7BCff, deco: {overline: {color: 2BB7BCff, size: 3}}}
+                  #              - string: {text: " 󰕾  {percent}% ", foreground: 2BB7BCff, deco: {overline: {color: 2BB7BCff, size: 3}}}
+
+  - backlight:
+      name: intel_backlight
+      content:
+        ramp:
+          tag: percent
+          items:
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+          - string: {text: " \ue0c9  {percent}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+
+  - network:
+      name: wlp1s0
+      poll-interval: 1000
+      content:
+        map:
+          conditions:
+              state == up:
+              - string: {text: " \uf1eb  ", foreground: 58A551ff, deco: {overline: {color: 58A551ff, size: 3}}}
+              - string: {text: "{ssid} {dl-speed:mb} | {ul-speed:mb} ",foreground: 58a55aff,  deco: {overline: {color: 58a551ff, size: 3}}}
+              state == testing:
+              - string: {text: " \uf6ac  ", foreground: 58A551ff, deco: {overline: {color: 58A551ff, size: 3}}}
+              state == down:
+              - string: {text: " \uf6ac  ", foreground: F13731ff, deco: {overline: {color: F13731ff, size: 3}}}
+
+  - battery:
+      name: BAT0
+      poll-interval: 2500
+      content:
+        map:
+          conditions:
+            state == discharging:
+            - ramp:
+                tag: capacity
+                items:
+                - string: {text: " \ue0b0  {capacity}% ", foreground: F13731ff, deco: {overline: {color: F13731ff, size: 3}}}
+                - string: {text: " \ue0b0  {capacity}% ", foreground: F13731ff, deco: {overline: {color: F13731ff, size: 3}}}
+                - string: {text: " \ue0b1  {capacity}% ", foreground: FF7B10ff, deco: {overline: {color: FF7B10ff, size: 3}}}
+                - string: {text: " \ue0b1  {capacity}% ", foreground: FF7B10ff, deco: {overline: {color: FF7B10ff, size: 3}}}
+                - string: {text: " \uf242  {capacity}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+                - string: {text: " \uf242  {capacity}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+                - string: {text: " \uf241  {capacity}% ", foreground: 3578C1ff, deco: {overline: {color: 3578C1ff, size: 3}}}
+                - string: {text: " \uf241  {capacity}% ", foreground: 3578C1ff, deco: {overline: {color: 3578C1ff, size: 3}}}
+                - string: {text: " \uf240  {capacity}% ", foreground: 58A551ff, deco: {overline: {color: 58A551ff, size: 3}}}
+                - string: {text: " \uf240 {capacity}% ", foreground: 58A551ff, deco: {overline: {color: 58A551ff, size: 3}}}
+            state == charging:
+            - ramp:
+                tag: capacity
+                items:
+                - string: {text: " \uf376  {capacity}% ", foreground: F13731ff, deco: {overline: {color: F13731ff, size: 3}}}
+                - string: {text: " \uf376  {capacity}% ", foreground: F13731ff, deco: {overline: {color: F13731ff, size: 3}}}
+                - string: {text: " \uf376  {capacity}% ", foreground: FF7B10ff, deco: {overline: {color: FF7B10ff, size: 3}}}
+                - string: {text: " \uf376  {capacity}% ", foreground: FF7B10ff, deco: {overline: {color: FF7B10ff, size: 3}}}
+                - string: {text: " \uf376  {capacity}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+                - string: {text: " \uf376  {capacity}% ", foreground: FFAD1Fff, deco: {overline: {color: FFAD1Fff, size: 3}}}
+                - string: {text: " \uf376  {capacity}% ", foreground: 3578C1ff, deco: {overline: {color: 3578C1ff, size: 3}}}
+                - string: {text: " \uf376  {capacity}% ", foreground: 3578C1ff, deco: {overline: {color: 3578C1ff, size: 3}}}
+                - string: {text: " \uf376  {capacity}% ", foreground: 58A551ff, deco: {overline: {color: 58A551ff, size: 3}}}
+                - string: {text: " \uf376  {capacity}% ", foreground: 58A551ff, deco: {overline: {color: 58A551ff, size: 3}}}
+            state == full:
+            - ramp:
+                tag: capacity
+                items:
+                - string: {text: " \uf240  {capacity}% ", foreground: 58A551ff, deco: {overline: {color: 58A551ff, size: 3}}}
+
+  - clock:
+      date-format: "%d/%m"
+      content:
+      - string: {text: " \uf133  {date} \uf017  {time} ", foreground: DE2062ff, deco: {overline: {color: DE2062ff, size: 3}}}
